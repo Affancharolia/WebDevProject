@@ -1,0 +1,188 @@
+/*------------------------------------ MAIN PAGE -----------------------------------------*/
+
+#home{
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: orangered;
+}
+
+/*------------------------------------ LOGIN PAGE -----------------------------------------*/
+
+#logging {
+    background-image: url(travel.jpg);
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.container {
+    color: aliceblue;
+    display: block;
+    margin: 167px;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+    height: 40%;
+}
+
+h2{
+    color: black;
+    text-align: center;
+}
+
+input, .btn{
+    display: block;
+}
+
+input, .btn{
+    color: black;
+    text-align: center;
+    width: 216px;
+    height: 20px;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+    opacity: 0.85;
+    font-size: 17px;
+    line-height: 20px;
+    text-decoration: none; 
+}
+
+#sub, .btn{
+    background-color: aliceblue;
+    width: 40%;
+    height: 50%;
+}
+
+input:hover,
+.btn:hover {
+  opacity: 1;
+}
+
+.btn{
+    background-color: aliceblue;
+}
+
+/*------------------------------------ CREATE NEW ACCOUNT PAGE -----------------------------------------*/
+
+#creating {
+    background-image: url(adventure.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.container2 {
+    color: aliceblue;
+    display: block;
+    margin: 20px;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+    height: 40%;
+}
+
+/*------------------------------------ CREATE EVENT PAGE -----------------------------------------*/
+
+#eventing {
+    margin: 0px;
+    background-image: url(create.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/*------------------------------------ TEMP PAGE -----------------------------------------*/
+
+#temp {
+    margin: 0px;
+}
+
+#header {
+    display: block;
+    margin: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    width: 40%;
+    height: 40%;
+    border: 2px solid black;
+}
+
+p{
+    color: blue;
+}
+
+/*------------------------------------ ARCHIVE PAGE -----------------------------------------*/
+
+.archi {
+    color: aliceblue;
+    display: block;
+    margin: 40px;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+    height: 40%;
+}
+
+/*------------------------------------ LOG OUT PAGE -----------------------------------------*/
+
+.bt {
+    display: block;
+    color: black;
+    text-align: center;
+    width: 63px;
+    height: 20px;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+    opacity: 0.85;
+    font-size: 17px;
+    line-height: 20px;
+    text-decoration: none; 
+    background-color: aliceblue;
+}
+
+.bt:hover {
+  opacity: 1;
+}
