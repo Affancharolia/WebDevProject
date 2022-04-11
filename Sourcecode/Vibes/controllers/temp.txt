@@ -1,0 +1,194 @@
+const User = require("../models/User");
+
+exports.createUser = async (req, res) => {
+
+        const {ufname, ulname, uemail, upassword, ucontact, ulocation, udob, ugender} = req.body; 
+        
+        if (!ufname || !ulname || !uemail || !upassword || !ucontact || !ulocation || !udob || !ugender){
+                res.status(422).json({ error: "Please fill all the field"});
+            }
+        
+        User.findOne({uemail:uemail})
+                .then((userExist) => {
+                        if (userExist){
+                                return res.status(422).json({ error: "Email already exists" });
+                        }
+
+                        const newUser = new User({
+                                ufname: ufname,
+                                ulname: ulname,
+                                uemail: uemail,
+                                upassword: upassword,
+                                ucontact: ucontact,
+                                ulocation: ulocation,
+                                udob: udob,
+                                ugender: ugender
+                            });
+                        await newUser.save();
+                        res.redirect("/login")
+                
+        });
+        
+        
+  };
+
+
+
+
+
+  [
+    {
+        "ename": "skjfhdhfkfdlkjldffdsfksjflskdj",
+        "etype": "dfsksdjklfjsdjflsdjlfdsjlkdj",
+        "eaccomodation": 768,
+        "eprice": 732687,
+        "edate": "2022-03-10T00:00:00.000Z",
+        "elocation": "jhdsds",
+        "edescription": "bfbdskjksj"
+    }
+]
+
+
+{
+        "ufname": "hkdfh",
+        "ulname": "jhkdh",
+        "uemail": "jshdkjs@fh.c",
+        "upassword": "kjdfhkj",
+        "ucontact": 86879,
+        "ulocation": "hkhkll",
+        "udob": "2022-04-05T00:00:00.000Z",
+        "ugender": "M",
+        "uevent": [
+            {
+        "ename": "skjfhdhfkfdlkjldffdsfksjflskdj",
+        "etype": "dfsksdjklfjsdjflsdjlfdsjlkdj",
+        "eaccomodation": 768,
+        "eprice": 732687,
+        "edate": "2022-03-10T00:00:00.000Z",
+        "elocation": "jhdsds",
+        "edescription": "bfbdskjksj"
+    },
+    {
+        "ename": "skjfhdhfkfdlkjldffdsfksjflskdj",
+        "etype": "dfsksdjklfjsdjflsdjlfdsjlkdj",
+        "eaccomodation": 768,
+        "eprice": 732687,
+        "edate": "2022-03-10T00:00:00.000Z",
+        "elocation": "jhdsds",
+        "edescription": "bfbdskjksj"
+    }
+        ]
+        
+}
+
+
+
+
+  const PostData = async (e) =>{
+
+
+    const res = await fetch("/val");
+
+    const data = await res.json();
+
+    if(data.status === 421 || !data){
+      window.alert("Email id or password incorrect");
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import React, {useState} from 'react';
+import { useHistory } from "react-router-dom";
+
+const Register = () => {
+  const history = useHistory();
+  /*
+  const test = () =>{
+    window.alert("checked");
+    console.log("text");
+  }*/
+  
+  const [user, setUser] = useState({
+    ufname: "", ulname: "", uemail: "", upassword: "", ucontact: "", ulocation: "", udob: "", ugender: ""
+  });
+
+  let name, value;
+
+  const handleInputs = (e) =>{
+    console.log(e);
+    name = e.target.name;
+    value = e.target.value;
+
+    setUser({...user, [name]:value});
+  } 
+  
+  const PostData = async (e) =>{
+
+    e.preventDefault();
+    const {ufname, ulname, uemail, upassword, ucontact, ulocation, udob, ugender} = user;
+ 
+   
+
+    const res = await fetch("/user", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          ufname, ulname, uemail, upassword, ucontact, ulocation, udob, ugender
+        })
+    });
+
+    const data = await res.json();
+
+    if(data.status === 422 || !data){
+      window.alert("Email id or password incorrect");
+    }
+    else
+    {
+      history.push("/login");
+    }
+}
+  
+  return (
+    <div class="container2">
+        <h2>CREATE ACCOUNT</h2>
+        <form method="POST">
+            <input type="text" name="ufname" autocomplete="off" value={user.ufname} onChange={handleInputs} placeholder="First Name" required/>
+            <input type="text" name="ulname" autocomplete="off" value={user.ulname} onChange={handleInputs} placeholder="Last Name" required/>
+            <input type="email" name="uemail" autocomplete="off" value={user.uemail} onChange={handleInputs} placeholder="Email ID" required/>
+            <input type="password" name="upassword" autocomplete="off" value={user.upassword} onChange={handleInputs} placeholder="Password" required/>
+            <input type="number" name="ucontact" autocomplete="off" value={user.ucontact} onChange={handleInputs} placeholder="Contact no" required/>
+            <input type="text" name="ulocation" autocomplete="off" value={user.ulocation} onChange={handleInputs} placeholder="Location" required/>
+            <input type="date" name="udob" autocomplete="off" value={user.udob} onChange={handleInputs} placeholder="Date Of Birth" required/>
+            <input type="text" name="ugender" autocomplete="off" value={user.ugender} onChange={handleInputs} placeholder="Gender" required/>
+            <input id="sub" type="submit" value="Sign Up" onClick={PostData}/>
+            <a href="/login" class="btn">Log In</a>
+        </form>
+        </div>
+  )
+}
+
+export default Register

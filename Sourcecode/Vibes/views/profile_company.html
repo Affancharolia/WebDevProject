@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>VIBES</title>
+        <meta name="description" content="Vibes is a platform where you can post your events and people can avail tickets for them.">
+        <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    </head>
+    <body id="home">
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/company">Companies</a></li>
+            <li><a href="/create_event">Create events</a></li>
+            <li><a href="/create_company">Create company</a></li>
+            <li><a href="/archives">Archives</a></li>
+            <li><a href="/delete">DELETE</a></li>
+            <li><a href="/profile_company">Profile company</a></li>
+            <li><a href="/profile_organizer">Profile organizer</a></li>
+            <li><a href="/logout">Log Out</a> </li>
+        </ul>
+        <?php
+                $dbConn = mysqli_connect("localhost", "root", "", "event_management"); 
+                $query = "SELECT * FROM company";  
+                $result = mysqli_query($dbConn, $query);  
+                while($row= mysqli_fetch_array($result))
+                {
+        ?>
+                    <div id="header">
+        <?php
+                    echo '<p>Cname:'.$row["CNAME"].'<p>';
+                    echo '<p>Type:'.$row["TYPE"].'</p>';
+                    echo '<p>Contact Number:'.$row["CONTACT"].'<p>';
+                    echo '<p>Email Id:'.$row["EMAIL"].'</p>';
+                    echo '<p>Location:'.$row["LOCA"].'</p>';
+                    echo '<p>Description:'.$row["DESCRIPTION"].'<p>';
+        ?>
+                    </div>
+        <?php
+                }
+        ?>  
+    </body>
+</html>
